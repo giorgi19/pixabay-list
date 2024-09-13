@@ -10,7 +10,7 @@ class AppView extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: const AppTheme().themeData,
       darkTheme: const AppDarkTheme().themeData,
-      home: const SizedBox(),
+      home: const Scaffold(),
     );
   }
 }
