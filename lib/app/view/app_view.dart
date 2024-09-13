@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:pixabay_list/app_ui/theme/app_theme.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SizedBox(),
+    return MaterialApp(
+      themeMode: ThemeMode.light,
+      theme: const AppTheme().themeData,
+      darkTheme: const AppDarkTheme().themeData,
+      home: const SizedBox(),
     );
   }
 }
