@@ -22,11 +22,11 @@ class PixabayRepository implements IPixabayRepository {
     try {
       final result = await pixabayDataSource.getPixabayData();
       return right(result);
-    } on DioException catch (e) {
-      return left(ApiFailure.getApiFailure(e));
-    } catch (e) {
+    } on DioException catch (error) {
+      return left(ApiFailure.getApiFailure(error));
+    } catch (error) {
       return left(
-        GeneralFailure.unknown(e.toString()),
+        GeneralFailure.unknown(error.toString()),
       );
     }
   }

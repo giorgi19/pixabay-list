@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pixabay_list/data/data_sources/remote/authentication_data_source.dart';
+import 'package:pixabay_list/data/repository/i_authentication_repository.dart';
 import 'package:pixabay_list/login/cubit/login_cubit.dart';
 import 'package:pixabay_list/login/widgets/login_form.dart';
 
@@ -14,7 +16,11 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => LoginCubit(
+        authenticationRepository: AuthenticationRepository(
+          authenticationDataSource: AuthenticationDataSource(),
+        ),
+      ),
       child: const LoginForm(),
     );
   }

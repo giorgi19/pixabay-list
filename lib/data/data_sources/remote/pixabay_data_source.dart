@@ -7,8 +7,6 @@ import 'package:pixabay_list/data/dto/pixabay_data_model.dart';
 import 'package:pixabay_list/main/bootstrap/bootstrap.dart';
 
 class PixabayDataSource {
-  PixabayDataSource();
-
   final ApiClient _apiClient = locator<ApiClient>();
 
   Future<List<PixabayDataModel>> getPixabayData() async {
@@ -22,8 +20,8 @@ class PixabayDataSource {
       return [];
     } on DioException catch (e) {
       throw ApiFailure.getApiFailure(e);
-    } catch (e) {
-      throw Exception(e);
+    } catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(error, stackTrace);
     }
   }
 }

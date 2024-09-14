@@ -6,6 +6,7 @@ import 'package:pixabay_list/app_ui/widgets/app_email_text_field.dart';
 import 'package:pixabay_list/login/cubit/login_cubit.dart';
 import 'package:pixabay_list/login/widgets/password_input.dart';
 import 'package:pixabay_list/pixabay_feed/view/pixabay_feed.dart';
+import 'package:pixabay_list/utils/enum.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -126,16 +127,24 @@ class _NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoginCubit>().state;
-
-    return AppButton.darkAqua(
-      key: const Key('loginWithEmailForm_nextButton'),
-      onPressed: state.isValid ?? false
-          ? () => {
-                // Navigation
-              }
-          : null,
-      child: const Text('Login'),
+    return BlocConsumer<LoginCubit, LoginState>(
+      listener: (context, loginState) {
+        if (loginState.status == AppStatus.success) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const PixabayFeed()),
+          );
+        }
+      },
+      builder: (context, loginState) => AppButton.darkAqua(
+        key: const Key('loginWithEmailForm_nextButton'),
+        onPressed: loginState.isValid ?? false
+            ? () async => {
+                  await context.read<LoginCubit>().loginWithEmailAndPassword(),
+                }
+            : null,
+        child: const Text('Login'),
+      ),
     );
   }
 }
