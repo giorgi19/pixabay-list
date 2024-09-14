@@ -14,11 +14,16 @@ class AuthenticationDataSource {
 
       //Mocked response
       return '';
-    } on DioException catch (e) {
-      throw ApiFailure.getApiFailure(e);
+    } on DioException catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(
+        ApiFailure.getApiFailure(error),
+        stackTrace,
+      );
     } catch (error, stackTrace) {
       throw Error.throwWithStackTrace(
-          AuthenticationFailure.loginWithEmailAndPassword(error), stackTrace);
+        AuthenticationFailure.loginWithEmailAndPassword(error),
+        stackTrace,
+      );
     }
   }
 }

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/app_ui/widgets/app_button.dart';
-import 'package:pixabay_list/app_ui/widgets/app_email_text_field.dart';
 import 'package:pixabay_list/features/login/cubit/login_cubit.dart';
+import 'package:pixabay_list/features/login/widgets/email_input.dart';
+import 'package:pixabay_list/features/login/widgets/header_title.dart';
 import 'package:pixabay_list/features/login/widgets/password_input.dart';
 import 'package:pixabay_list/features/pixabay_feed/view/pixabay_feed.dart';
 import 'package:pixabay_list/utils/enum.dart';
@@ -30,9 +31,9 @@ class LoginForm extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  _HeaderTitle(),
+                  HeaderTitle(),
                   SizedBox(height: AppSpacing.xxxlg),
-                  _EmailInput(),
+                  EmailInput(),
                   PasswordInput(),
                   _RegistrationTextButton(),
                   Spacer(),
@@ -44,55 +45,6 @@ class LoginForm extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class _HeaderTitle extends StatelessWidget {
-  const _HeaderTitle();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Text(
-      'Login Page',
-      key: const Key('loginWithEmailForm_header_title'),
-      style: theme.textTheme.displaySmall,
-    );
-  }
-}
-
-class _EmailInput extends StatefulWidget {
-  const _EmailInput();
-
-  @override
-  State<_EmailInput> createState() => _EmailInputState();
-}
-
-class _EmailInputState extends State<_EmailInput> {
-  final _controller = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    final state = context.watch<LoginCubit>().state;
-
-    return AppEmailTextField(
-      key: const Key('loginWithEmailForm_emailInput_textField'),
-      controller: _controller,
-      hintText: 'Email',
-      onChanged: (email) =>
-          context.read<LoginCubit>().emailChanged(emailString: email),
-      errorText: state.email?.error?.name,
-      suffix: ClearIconButton(onPressed: () {
-        _controller.clear();
-        context.read<LoginCubit>().emailChanged(emailString: '');
-      }),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
 
@@ -110,7 +62,6 @@ class ClearIconButton extends StatelessWidget {
       key: const Key('loginWithEmailForm_clearIconButton'),
       padding: const EdgeInsets.only(right: AppSpacing.md),
       child: Visibility(
-        visible: true,
         child: GestureDetector(
           onTap: onPressed,
           child: const Icon(

@@ -25,7 +25,7 @@ extension Explanation on PasswordValidationError {
   String? get name {
     switch (this) {
       case PasswordValidationError.invalid:
-        return "Invalid condition";
+        return 'Invalid condition';
       default:
         return null;
     }

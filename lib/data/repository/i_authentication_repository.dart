@@ -24,7 +24,7 @@ class AuthenticationRepository implements IAuthenticationRepository {
       return left(ApiFailure.getApiFailure(error));
     } on AuthenticationFailure catch (error) {
       return left(
-          AuthenticationFailure.loginWithEmailAndPassword(error.toString()));
+          AuthenticationFailure.loginWithEmailAndPassword(error.toString()),);
     } catch (error) {
       return left(GeneralFailure.unknown(error.toString()));
     }

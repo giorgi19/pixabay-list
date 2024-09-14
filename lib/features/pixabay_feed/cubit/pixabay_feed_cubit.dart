@@ -17,7 +17,8 @@ class PixabayFeedCubit extends Cubit<PixabayFeedState> {
     emit(const PixabayFeedState.loading());
     final pixabayData = await pixabayRepository.getPixabayData();
     pixabayData.fold(
-        (failure) => emit(PixabayFeedState.failed(error: failure.toString())),
-        (data) => emit(PixabayFeedState.loaded(data: data)));
+      (failure) => emit(PixabayFeedState.failed(error: failure.toString())),
+      (data) => emit(PixabayFeedState.loaded(data: data)),
+    );
   }
 }

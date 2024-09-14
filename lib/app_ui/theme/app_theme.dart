@@ -208,20 +208,19 @@ class AppTheme {
 
   SwitchThemeData get _switchTheme {
     return SwitchThemeData(
-      thumbColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      thumbColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return AppColors.darkAqua;
         }
         return AppColors.eerieBlack;
       }),
-      trackColor: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return AppColors.primaryContainer;
         }
         return AppColors.grey;
       }),
-      trackOutlineColor:
-          WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+      trackOutlineColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return AppColors.primaryContainer;
         }

@@ -17,7 +17,7 @@ final GetIt locator = GetIt.instance;
 /// A fully implemented get_it is not necessary for this project until the dependencies grow.
 /// For now, I will use constructor dependency injection, except the API.
 void setupLocator() {
-  locator.registerLazySingleton<Dio>(() => Dio());
+  locator.registerLazySingleton<Dio>(Dio.new);
   locator.registerLazySingleton<ApiClient>(
     () => ApiClient(
       baseUrl: 'https://pixabay.com/api/',
@@ -34,7 +34,7 @@ typedef AppBuilder = Future<Widget> Function(
 Future<void> bootstrap(AppBuilder builder) async {
   await runZonedGuarded<Future<void>>(
     () async {
-      await dotenv.load(fileName: ".env");
+      await dotenv.load();
       WidgetsFlutterBinding.ensureInitialized();
       final sharedPreferences = await SharedPreferences.getInstance();
       setupLocator();

@@ -29,7 +29,7 @@ class ApiClient {
 
           return handler.next(options);
         },
-        onError: (DioException e, handler) {
+        onError: (e, handler) {
           return handler.next(e); // Pass the error
         },
       ),

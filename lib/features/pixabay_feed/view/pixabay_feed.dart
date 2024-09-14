@@ -30,13 +30,9 @@ class PixabayFeedView extends StatelessWidget {
           initial: () => const Scaffold(),
           loading: () => const LoadingStateWidget(),
           loaded: (data) => const Scaffold(
-            body: Center(
-              child: SizedBox(),
-            ),
+            body: Center(child: SizedBox()),
           ),
-          failed: (error) => ErrorStateWidget(
-            error: error,
-          ),
+          failed: (error) => ErrorStateWidget(error: error),
         ),
       );
 }
