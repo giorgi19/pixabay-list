@@ -5,6 +5,7 @@ import 'package:pixabay_list/app_ui/widgets/app_button.dart';
 import 'package:pixabay_list/app_ui/widgets/app_email_text_field.dart';
 import 'package:pixabay_list/login/cubit/login_cubit.dart';
 import 'package:pixabay_list/login/widgets/password_input.dart';
+import 'package:pixabay_list/pixabay_feed/view/pixabay_feed.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -32,6 +33,7 @@ class LoginForm extends StatelessWidget {
                   SizedBox(height: AppSpacing.xxxlg),
                   _EmailInput(),
                   PasswordInput(),
+                  _RegistrationTextButton(),
                   Spacer(),
                   _NextButton(),
                 ],
@@ -109,12 +111,11 @@ class ClearIconButton extends StatelessWidget {
       child: Visibility(
         visible: true,
         child: GestureDetector(
-            onTap: onPressed,
-            child: const Icon(
-              Icons.clear,
-            )
-            //  Assets.icons.closeCircle.svg(),
-            ),
+          onTap: onPressed,
+          child: const Icon(
+            Icons.clear,
+          ),
+        ),
       ),
     );
   }
@@ -135,6 +136,23 @@ class _NextButton extends StatelessWidget {
               }
           : null,
       child: const Text('Login'),
+    );
+  }
+}
+
+class _RegistrationTextButton extends StatelessWidget {
+  const _RegistrationTextButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const PixabayFeed()),
+        );
+      },
+      child: const Text('Registration'),
     );
   }
 }

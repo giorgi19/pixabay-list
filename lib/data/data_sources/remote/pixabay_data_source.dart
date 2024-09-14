@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:pixabay_list/api/failure/api_client.dart';
+import 'package:pixabay_list/api/api_client.dart';
 import 'package:pixabay_list/api/failure/api_failure.dart';
 import 'package:pixabay_list/data/dto/pixabay_data_model.dart';
 import 'package:pixabay_list/main/bootstrap/bootstrap.dart';
@@ -13,7 +13,7 @@ class PixabayDataSource {
 
   Future<List<PixabayDataModel>> getPixabayData() async {
     try {
-      final response = await _apiClient.httpClient.get('/endpoint');
+      final response = await _apiClient.httpClient.get('');
       if (response.statusCode == HttpStatus.ok) {
         // decode json response
         // return PixabayDataModel

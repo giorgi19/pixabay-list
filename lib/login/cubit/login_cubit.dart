@@ -8,18 +8,10 @@ import 'package:pixabay_list/utils/password.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit()
-      : super(
-          const LoginState(
-            status: AppStatus.initial,
-          ),
-        );
+  LoginCubit() : super(const LoginState(status: AppStatus.initial));
 
-  void emailChanged({
-    required String emailString,
-  }) {
+  void emailChanged({required String emailString}) {
     final email = Email.dirty(emailString);
-
     emit(
       state.copyWith(
         email: email,
@@ -29,13 +21,13 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
-  void passwordChanged({
-    required String passwordString,
-  }) {
+  void passwordChanged({required String passwordString}) {
     final password = Password.dirty(passwordString);
-    emit(state.copyWith(
-      password: password,
-      isValid: Formz.validate([state.email ?? const Email.pure(), password]),
-    ));
+    emit(
+      state.copyWith(
+        password: password,
+        isValid: Formz.validate([state.email ?? const Email.pure(), password]),
+      ),
+    );
   }
 }
