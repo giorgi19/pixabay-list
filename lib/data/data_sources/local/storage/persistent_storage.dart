@@ -1,4 +1,4 @@
-import 'package:pixabay_list/storage/storage.dart';
+import 'package:pixabay_list/data/data_sources/local/storage/storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Storage that saves data in the device's persistent memory.

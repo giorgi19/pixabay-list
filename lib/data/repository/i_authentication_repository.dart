@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:pixabay_list/api/failure/api_failure.dart';
-import 'package:pixabay_list/api/failure/authentication_failure.dart';
-import 'package:pixabay_list/api/failure/general_failure.dart';
-import 'package:pixabay_list/api/repo_response.dart';
+import 'package:pixabay_list/data/api/failure/api_failure.dart';
+import 'package:pixabay_list/data/api/failure/authentication_failure.dart';
+import 'package:pixabay_list/data/api/failure/general_failure.dart';
+import 'package:pixabay_list/data/api/repo_response.dart';
 import 'package:pixabay_list/data/data_sources/remote/authentication_data_source.dart';
 
 abstract class IAuthenticationRepository {

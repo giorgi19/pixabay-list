@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:pixabay_list/api/failure/api_failure.dart';
-import 'package:pixabay_list/api/failure/authentication_failure.dart';
+import 'package:pixabay_list/data/api/failure/api_failure.dart';
+import 'package:pixabay_list/data/api/failure/authentication_failure.dart';
 
 class AuthenticationDataSource {
   // final ApiClient _apiClient = locator<ApiClient>();

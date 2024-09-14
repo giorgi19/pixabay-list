@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pixabay_list/api/failure/failure.dart';
+import 'package:pixabay_list/data/api/failure/failure.dart';
 
 part 'authentication_failure.freezed.dart';
 

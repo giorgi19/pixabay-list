@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:pixabay_list/api/api_client.dart';
-import 'package:pixabay_list/api/failure/api_failure.dart';
+import 'package:pixabay_list/data/api/api_client.dart';
+import 'package:pixabay_list/data/api/failure/api_failure.dart';
 import 'package:pixabay_list/data/dto/pixabay_data_model.dart';
 import 'package:pixabay_list/main/bootstrap/bootstrap.dart';
 

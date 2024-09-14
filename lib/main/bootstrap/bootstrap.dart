@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pixabay_list/api/api_client.dart';
+import 'package:pixabay_list/data/api/api_client.dart';
+import 'package:pixabay_list/data/data_sources/local/storage/token_storage.dart';
 import 'package:pixabay_list/main/bootstrap/app_bloc_observer.dart';
-import 'package:pixabay_list/storage/token_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final GetIt locator = GetIt.instance;

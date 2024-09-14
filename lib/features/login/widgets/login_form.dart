@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/app_ui/widgets/app_button.dart';
 import 'package:pixabay_list/app_ui/widgets/app_email_text_field.dart';
-import 'package:pixabay_list/login/cubit/login_cubit.dart';
-import 'package:pixabay_list/login/widgets/password_input.dart';
-import 'package:pixabay_list/pixabay_feed/view/pixabay_feed.dart';
+import 'package:pixabay_list/features/login/cubit/login_cubit.dart';
+import 'package:pixabay_list/features/login/widgets/password_input.dart';
+import 'package:pixabay_list/features/pixabay_feed/view/pixabay_feed.dart';
 import 'package:pixabay_list/utils/enum.dart';
 
 class LoginForm extends StatelessWidget {
