@@ -9,15 +9,14 @@ import 'package:pixabay_list/main/bootstrap/bootstrap.dart';
 class PixabayDataSource {
   final ApiClient _apiClient = locator<ApiClient>();
 
-  Future<List<PixabayDataModel>> getPixabayData() async {
+  Future<PixabayDataModel> getPixabayData() async {
     try {
       final response = await _apiClient.httpClient.get('');
       if (response.statusCode == HttpStatus.ok) {
-        // decode json response
-        // return PixabayDataModel
-        return [];
+        final result = PixabayDataModel.fromJson(response.data);
+        return result;
       }
-      return [];
+      return const PixabayDataModel();
     } on DioException catch (error, stackTrace) {
       throw Error.throwWithStackTrace(
         ApiFailure.getApiFailure(error),

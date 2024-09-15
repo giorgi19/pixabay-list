@@ -5,7 +5,7 @@ class PixabayFeedState with _$PixabayFeedState {
   const factory PixabayFeedState.initial() = _Initial;
   const factory PixabayFeedState.loading() = _Loading;
   const factory PixabayFeedState.loaded({
-    required List<PixabayDataModel> data,
+    required PixabayDataModel data,
   }) = _Loaded;
   const factory PixabayFeedState.failed({
     required String? error,

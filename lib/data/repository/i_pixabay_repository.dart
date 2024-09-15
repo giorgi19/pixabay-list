@@ -7,7 +7,7 @@ import 'package:pixabay_list/data/data_sources/remote/pixabay_data_source.dart';
 import 'package:pixabay_list/data/dto/pixabay_data_model.dart';
 
 abstract class IPixabayRepository {
-  RepoResponse<List<PixabayDataModel>> getPixabayData();
+  RepoResponse<PixabayDataModel> getPixabayData();
 }
 
 class PixabayRepository implements IPixabayRepository {
@@ -18,7 +18,7 @@ class PixabayRepository implements IPixabayRepository {
   final PixabayDataSource pixabayDataSource;
 
   @override
-  RepoResponse<List<PixabayDataModel>> getPixabayData() async {
+  RepoResponse<PixabayDataModel> getPixabayData() async {
     try {
       final result = await pixabayDataSource.getPixabayData();
       return right(result);

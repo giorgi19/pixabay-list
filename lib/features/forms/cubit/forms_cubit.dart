@@ -19,7 +19,6 @@ class FormsCubit extends Cubit<FormsState> {
         isValid: Formz.validate([
           email,
           state.password ?? const Password.pure(),
-          state.age ?? const Age.pure(),
         ]),
       ),
     );
@@ -33,7 +32,6 @@ class FormsCubit extends Cubit<FormsState> {
         isValid: Formz.validate([
           state.email ?? const Email.pure(),
           password,
-          state.age ?? const Age.pure(),
         ]),
       ),
     );
@@ -44,10 +42,8 @@ class FormsCubit extends Cubit<FormsState> {
     emit(
       state.copyWith(
         age: age,
-        isValid: Formz.validate([
+        ageIsValid: Formz.validate([
           age,
-          state.email ?? const Email.pure(),
-          state.password ?? const Password.pure(),
         ]),
       ),
     );

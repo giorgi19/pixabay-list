@@ -23,9 +23,11 @@ class RegistrationButton extends StatelessWidget {
         }
       },
       builder: (context, registrationState) {
+        final isValid = formsState.isValid ?? false;
+        final ageIsValid = formsState.ageIsValid ?? false;
         return AppButton.smallTransparent(
           key: const Key('registration_Button'),
-          onPressed: formsState.isValid ?? false
+          onPressed: isValid && ageIsValid
               ? () async => {
                     await context.read<RegistrationCubit>().registration(
                           email: formsState.email?.value,
