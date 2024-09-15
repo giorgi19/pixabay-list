@@ -8,11 +8,6 @@ import 'package:pixabay_list/features/login/widgets/login_form.dart';
 class Login extends StatelessWidget {
   const Login({super.key});
 
-  static Route<void> route() =>
-      MaterialPageRoute<void>(builder: (_) => const Login());
-
-  static const String name = '/login';
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
