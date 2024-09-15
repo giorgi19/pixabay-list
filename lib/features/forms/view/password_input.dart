@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/widgets/app_password_text_field.dart';
-import 'package:pixabay_list/features/login/cubit/login_cubit.dart';
+import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
 
 class PasswordInput extends StatefulWidget {
   const PasswordInput({super.key});
@@ -15,14 +15,14 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoginCubit>().state;
+    final state = context.watch<FormsCubit>().state;
 
     return AppPasswordTextField(
       key: const Key('loginWithEmailForm_emailInput_textField'),
       controller: _controller,
       hintText: 'Password',
       onChanged: (password) =>
-          context.read<LoginCubit>().passwordChanged(passwordString: password),
+          context.read<FormsCubit>().passwordChanged(passwordString: password),
       errorText: state.password?.error?.name,
     );
   }

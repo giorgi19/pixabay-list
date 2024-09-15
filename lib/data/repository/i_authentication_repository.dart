@@ -7,7 +7,10 @@ import 'package:pixabay_list/data/api/repo_response.dart';
 import 'package:pixabay_list/data/data_sources/remote/authentication_data_source.dart';
 
 abstract class IAuthenticationRepository {
-  RepoResponse<String?> loginWithEmailAndPassword();
+  RepoResponse<String?> loginWithEmailAndPassword({
+    String? email,
+    String? password,
+  });
 }
 
 class AuthenticationRepository implements IAuthenticationRepository {
@@ -16,15 +19,22 @@ class AuthenticationRepository implements IAuthenticationRepository {
   final AuthenticationDataSource authenticationDataSource;
 
   @override
-  RepoResponse<String?> loginWithEmailAndPassword() async {
+  RepoResponse<String?> loginWithEmailAndPassword({
+    String? email,
+    String? password,
+  }) async {
     try {
-      final result = await authenticationDataSource.loginWithEmailAndPassword();
+      final result = await authenticationDataSource.loginWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return right(result);
     } on DioException catch (error) {
       return left(ApiFailure.getApiFailure(error));
     } on AuthenticationFailure catch (error) {
       return left(
-          AuthenticationFailure.loginWithEmailAndPassword(error.toString()),);
+        AuthenticationFailure.loginWithEmailAndPassword(error.toString()),
+      );
     } catch (error) {
       return left(GeneralFailure.unknown(error.toString()));
     }

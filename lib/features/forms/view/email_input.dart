@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/widgets/app_email_text_field.dart';
-import 'package:pixabay_list/features/login/cubit/login_cubit.dart';
-import 'package:pixabay_list/features/login/widgets/login_form.dart';
+import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
+import 'package:pixabay_list/features/login/widgets/clear_icon_button.dart';
 
 class EmailInput extends StatefulWidget {
   const EmailInput({super.key});
@@ -16,19 +16,19 @@ class _EmailInputState extends State<EmailInput> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<LoginCubit>().state;
+    final state = context.watch<FormsCubit>().state;
 
     return AppEmailTextField(
       key: const Key('loginWithEmailForm_emailInput_textField'),
       controller: _controller,
       hintText: 'Email',
       onChanged: (email) =>
-          context.read<LoginCubit>().emailChanged(emailString: email),
+          context.read<FormsCubit>().emailChanged(emailString: email),
       errorText: state.email?.error?.name,
       suffix: ClearIconButton(
         onPressed: () {
           _controller.clear();
-          context.read<LoginCubit>().emailChanged(emailString: '');
+          context.read<FormsCubit>().emailChanged(emailString: '');
         },
       ),
     );

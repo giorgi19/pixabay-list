@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
-import 'package:pixabay_list/features/login/widgets/email_input.dart';
+import 'package:pixabay_list/features/forms/view/email_input.dart';
+import 'package:pixabay_list/features/forms/view/password_input.dart';
 import 'package:pixabay_list/features/login/widgets/header_title.dart';
 import 'package:pixabay_list/features/login/widgets/next_button.dart';
-import 'package:pixabay_list/features/login/widgets/password_input.dart';
 import 'package:pixabay_list/features/login/widgets/registration_text_button.dart';
 
 class LoginForm extends StatelessWidget {
@@ -40,31 +40,6 @@ class LoginForm extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ClearIconButton extends StatelessWidget {
-  const ClearIconButton({
-    required this.onPressed,
-    super.key,
-  });
-
-  final VoidCallback? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      key: const Key('loginWithEmailForm_clearIconButton'),
-      padding: const EdgeInsets.only(right: AppSpacing.md),
-      child: Visibility(
-        child: GestureDetector(
-          onTap: onPressed,
-          child: const Icon(
-            Icons.clear,
-          ),
-        ),
       ),
     );
   }

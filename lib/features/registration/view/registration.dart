@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/app_ui/widgets/app_back_button.dart';
+import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
+import 'package:pixabay_list/features/forms/view/email_input.dart';
+import 'package:pixabay_list/features/forms/view/password_input.dart';
+import 'package:pixabay_list/features/registration/cubit/registration_cubit.dart';
 
 class Registration extends StatelessWidget {
   const Registration({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const RegistrationView();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RegistrationCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FormsCubit(),
+        ),
+      ],
+      child: const RegistrationView(),
+    );
   }
 }
 
@@ -18,6 +34,33 @@ class RegistrationView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const AppBackButton(),
+      ),
+      body: const CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                AppSpacing.xlg,
+                AppSpacing.lg,
+                AppSpacing.xlg,
+                AppSpacing.xxlg,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // HeaderTitle(),
+                  // SizedBox(height: AppSpacing.xxxlg),
+                  EmailInput(),
+                  PasswordInput(),
+                  // Spacer(),
+                  // NextButton(),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

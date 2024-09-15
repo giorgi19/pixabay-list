@@ -5,7 +5,10 @@ import 'package:pixabay_list/data/api/failure/authentication_failure.dart';
 class AuthenticationDataSource {
   // final ApiClient _apiClient = locator<ApiClient>();
 
-  Future<String?> loginWithEmailAndPassword() async {
+  Future<String?> loginWithEmailAndPassword({
+    String? email,
+    String? password,
+  }) async {
     try {
       // final response = await _apiClient.httpClient.get('');
       // if (response.statusCode == HttpStatus.ok) {
