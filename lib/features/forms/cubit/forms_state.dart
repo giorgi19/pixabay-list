@@ -6,5 +6,6 @@ class FormsState with _$FormsState {
     bool? isValid,
     final Email? email,
     final Password? password,
+    final Age? age,
   }) = _Initial;
 }

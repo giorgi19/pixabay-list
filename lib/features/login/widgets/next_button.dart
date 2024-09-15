@@ -23,7 +23,7 @@ class NextButton extends StatelessWidget {
         }
       },
       builder: (context, loginState) => AppButton.darkAqua(
-        key: const Key('loginWithEmailForm_nextButton'),
+        key: const Key('login_nextButton'),
         onPressed: formsState.isValid ?? false
             ? () async => {
                   await context.read<LoginCubit>().loginWithEmailAndPassword(

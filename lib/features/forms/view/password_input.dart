@@ -15,15 +15,15 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<FormsCubit>().state;
+    final formsState = context.watch<FormsCubit>().state;
 
     return AppPasswordTextField(
-      key: const Key('loginWithEmailForm_emailInput_textField'),
+      key: const Key('passwordInput_textField'),
       controller: _controller,
       hintText: 'Password',
       onChanged: (password) =>
           context.read<FormsCubit>().passwordChanged(passwordString: password),
-      errorText: state.password?.error?.name,
+      errorText: formsState.password?.error?.name,
     );
   }
 }

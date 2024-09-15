@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/app_ui/widgets/app_back_button.dart';
 import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
+import 'package:pixabay_list/features/forms/view/age_input.dart';
 import 'package:pixabay_list/features/forms/view/email_input.dart';
 import 'package:pixabay_list/features/forms/view/password_input.dart';
 import 'package:pixabay_list/features/registration/cubit/registration_cubit.dart';
+import 'package:pixabay_list/features/registration/widget/header_title.dart';
+import 'package:pixabay_list/features/registration/widget/registration_button.dart';
 
 class Registration extends StatelessWidget {
   const Registration({super.key});
@@ -50,12 +53,13 @@ class RegistrationView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // HeaderTitle(),
-                  // SizedBox(height: AppSpacing.xxxlg),
+                  HeaderTitle(),
+                  SizedBox(height: AppSpacing.xxxlg),
                   EmailInput(),
                   PasswordInput(),
-                  // Spacer(),
-                  // NextButton(),
+                  AgeInput(),
+                  Spacer(),
+                  RegistrationButton(),
                 ],
               ),
             ),

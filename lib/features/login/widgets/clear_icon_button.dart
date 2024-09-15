@@ -12,7 +12,7 @@ class ClearIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      key: const Key('loginWithEmailForm_clearIconButton'),
+      key: const Key('clearIconButton'),
       padding: const EdgeInsets.only(right: AppSpacing.md),
       child: Visibility(
         child: GestureDetector(

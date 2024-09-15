@@ -16,15 +16,15 @@ class _EmailInputState extends State<EmailInput> {
 
   @override
   Widget build(BuildContext context) {
-    final state = context.watch<FormsCubit>().state;
+    final formsState = context.watch<FormsCubit>().state;
 
     return AppEmailTextField(
-      key: const Key('loginWithEmailForm_emailInput_textField'),
+      key: const Key('emailInput_textField'),
       controller: _controller,
       hintText: 'Email',
       onChanged: (email) =>
           context.read<FormsCubit>().emailChanged(emailString: email),
-      errorText: state.email?.error?.name,
+      errorText: formsState.email?.error?.name,
       suffix: ClearIconButton(
         onPressed: () {
           _controller.clear();

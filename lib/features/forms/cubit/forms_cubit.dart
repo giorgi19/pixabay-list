@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pixabay_list/utils/age.dart';
 import 'package:pixabay_list/utils/email.dart';
 import 'package:pixabay_list/utils/password.dart';
 
@@ -15,8 +16,11 @@ class FormsCubit extends Cubit<FormsState> {
     emit(
       state.copyWith(
         email: email,
-        isValid:
-            Formz.validate([email, state.password ?? const Password.pure()]),
+        isValid: Formz.validate([
+          email,
+          state.password ?? const Password.pure(),
+          state.age ?? const Age.pure(),
+        ]),
       ),
     );
   }
@@ -26,7 +30,25 @@ class FormsCubit extends Cubit<FormsState> {
     emit(
       state.copyWith(
         password: password,
-        isValid: Formz.validate([state.email ?? const Email.pure(), password]),
+        isValid: Formz.validate([
+          state.email ?? const Email.pure(),
+          password,
+          state.age ?? const Age.pure(),
+        ]),
+      ),
+    );
+  }
+
+  void ageChanged({required String ageString}) {
+    final age = Age.dirty(ageString);
+    emit(
+      state.copyWith(
+        age: age,
+        isValid: Formz.validate([
+          age,
+          state.email ?? const Email.pure(),
+          state.password ?? const Password.pure(),
+        ]),
       ),
     );
   }

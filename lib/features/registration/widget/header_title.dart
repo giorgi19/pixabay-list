@@ -7,8 +7,8 @@ class HeaderTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Text(
-      'Login Page',
-      key: const Key('login_header_title'),
+      'Registration Page',
+      key: const Key('registration_header_title'),
       style: theme.textTheme.displaySmall,
     );
   }
