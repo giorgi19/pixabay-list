@@ -8,4 +8,8 @@ class AuthenticationFailure with _$AuthenticationFailure implements Failure {
   const factory AuthenticationFailure.loginWithEmailAndPassword(
     Object error,
   ) = LoginWithEmailAndPassword;
+
+  const factory AuthenticationFailure.registration(
+    Object error,
+  ) = Registration;
 }

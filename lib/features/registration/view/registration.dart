@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/app_ui/widgets/app_back_button.dart';
+import 'package:pixabay_list/data/data_sources/remote/authentication_data_source.dart';
+import 'package:pixabay_list/data/repository/i_authentication_repository.dart';
 import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
 import 'package:pixabay_list/features/forms/view/age_input.dart';
 import 'package:pixabay_list/features/forms/view/email_input.dart';
@@ -18,7 +20,11 @@ class Registration extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => RegistrationCubit(),
+          create: (context) => RegistrationCubit(
+            authenticationRepository: AuthenticationRepository(
+              authenticationDataSource: AuthenticationDataSource(),
+            ),
+          ),
         ),
         BlocProvider(
           create: (context) => FormsCubit(),

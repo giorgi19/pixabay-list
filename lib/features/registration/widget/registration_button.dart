@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pixabay_list/app/routes/routes.dart';
 import 'package:pixabay_list/app_ui/widgets/app_button.dart';
 import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
 import 'package:pixabay_list/features/registration/cubit/registration_cubit.dart';
+import 'package:pixabay_list/utils/enum.dart';
 
 class RegistrationButton extends StatelessWidget {
   const RegistrationButton({super.key});
@@ -12,11 +14,26 @@ class RegistrationButton extends StatelessWidget {
     final formsState = context.watch<FormsCubit>().state;
 
     return BlocConsumer<RegistrationCubit, RegistrationState>(
-      listener: (context, registrationState) {},
+      listener: (context, registrationState) {
+        if (registrationState.status == AppStatus.success) {
+          Navigator.pushReplacementNamed(
+            context,
+            AppRoutes.pixabayFeed,
+          );
+        }
+      },
       builder: (context, registrationState) {
         return AppButton.smallTransparent(
           key: const Key('registration_Button'),
-          onPressed: formsState.isValid ?? false ? () async => {} : null,
+          onPressed: formsState.isValid ?? false
+              ? () async => {
+                    await context.read<RegistrationCubit>().registration(
+                          email: formsState.email?.value,
+                          password: formsState.password?.value,
+                          age: int.parse(formsState.age?.value ?? '0'),
+                        ),
+                  }
+              : null,
           child: const Text('Register'),
         );
       },

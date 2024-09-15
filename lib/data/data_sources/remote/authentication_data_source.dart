@@ -29,4 +29,30 @@ class AuthenticationDataSource {
       );
     }
   }
+
+  Future<String?> registration({
+    String? email,
+    String? password,
+    int? age,
+  }) async {
+    try {
+      // final response = await _apiClient.httpClient.get('');
+      // if (response.statusCode == HttpStatus.ok) {
+      //   return response;
+      // }
+
+      //Mocked response
+      return '';
+    } on DioException catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(
+        ApiFailure.getApiFailure(error),
+        stackTrace,
+      );
+    } catch (error, stackTrace) {
+      throw Error.throwWithStackTrace(
+        AuthenticationFailure.registration(error),
+        stackTrace,
+      );
+    }
+  }
 }

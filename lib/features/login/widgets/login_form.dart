@@ -3,7 +3,7 @@ import 'package:pixabay_list/app_ui/spacing/app_spacing.dart';
 import 'package:pixabay_list/features/forms/view/email_input.dart';
 import 'package:pixabay_list/features/forms/view/password_input.dart';
 import 'package:pixabay_list/features/login/widgets/header_title.dart';
-import 'package:pixabay_list/features/login/widgets/next_button.dart';
+import 'package:pixabay_list/features/login/widgets/login_button.dart';
 import 'package:pixabay_list/features/login/widgets/registration_text_button.dart';
 
 class LoginForm extends StatelessWidget {
@@ -34,7 +34,7 @@ class LoginForm extends StatelessWidget {
                   PasswordInput(),
                   RegistrationTextButton(),
                   Spacer(),
-                  NextButton(),
+                  LoginButton(),
                 ],
               ),
             ),

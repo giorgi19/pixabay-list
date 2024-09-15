@@ -11,6 +11,12 @@ abstract class IAuthenticationRepository {
     String? email,
     String? password,
   });
+
+  RepoResponse<String?> registration({
+    String? email,
+    String? password,
+    int? age,
+  });
 }
 
 class AuthenticationRepository implements IAuthenticationRepository {
@@ -34,6 +40,29 @@ class AuthenticationRepository implements IAuthenticationRepository {
     } on AuthenticationFailure catch (error) {
       return left(
         AuthenticationFailure.loginWithEmailAndPassword(error.toString()),
+      );
+    } catch (error) {
+      return left(GeneralFailure.unknown(error.toString()));
+    }
+  }
+
+  @override
+  RepoResponse<String?> registration({
+    String? email,
+    String? password,
+    int? age,
+  }) async {
+    try {
+      final result = await authenticationDataSource.registration(
+        email: email,
+        password: password,
+      );
+      return right(result);
+    } on DioException catch (error) {
+      return left(ApiFailure.getApiFailure(error));
+    } on AuthenticationFailure catch (error) {
+      return left(
+        AuthenticationFailure.registration(error.toString()),
       );
     } catch (error) {
       return left(GeneralFailure.unknown(error.toString()));

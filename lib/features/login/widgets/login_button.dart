@@ -6,8 +6,8 @@ import 'package:pixabay_list/features/forms/cubit/forms_cubit.dart';
 import 'package:pixabay_list/features/login/cubit/login_cubit.dart';
 import 'package:pixabay_list/utils/enum.dart';
 
-class NextButton extends StatelessWidget {
-  const NextButton({super.key});
+class LoginButton extends StatelessWidget {
+  const LoginButton({super.key});
 
   @override
   Widget build(BuildContext context) {
