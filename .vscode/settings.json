@@ -5,9 +5,11 @@
         "dartz",
         "dotenv",
         "Formz",
+        "HDURL",
         "interps",
         "ints",
         "LTRB",
-        "todos"
+        "todos",
+        "webformat"
     ]
 }

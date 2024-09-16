@@ -13,6 +13,7 @@ analyzer:
     parameter_assignments: error
     todo: ignore
     deprecated_member_use_from_same_package: ignore
+    invalid_annotation_target: ignore
 
 
   strong-mode:
