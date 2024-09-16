@@ -16,9 +16,10 @@ class RegistrationButton extends StatelessWidget {
     return BlocConsumer<RegistrationCubit, RegistrationState>(
       listener: (context, registrationState) {
         if (registrationState.status == AppStatus.success) {
-          Navigator.pushReplacementNamed(
+          Navigator.pushNamedAndRemoveUntil(
             context,
             AppRoutes.pixabayFeed,
+            (route) => false,
           );
         }
       },

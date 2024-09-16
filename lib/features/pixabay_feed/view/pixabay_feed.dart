@@ -42,7 +42,8 @@ class PixabayFeedView extends StatelessWidget {
             body: CustomScrollView(
               slivers: [
                 const SliverAppBar(
-                  title: Text('Pixabay feed'),
+                  leading: SizedBox(),
+                  title: Center(child: Text('Pixabay feed')),
                 ),
                 SliverFixedExtentList(
                   itemExtent: 300.0,
