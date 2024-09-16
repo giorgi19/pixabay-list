@@ -24,6 +24,8 @@ class ApiClient {
         onRequest: (options, handler) async {
           final apiKey = dotenv.env['API_KEY'];
           options.queryParameters['key'] = apiKey;
+
+          /// Saving token in SharedPreferences is a security flaw. instead, I use memory storage.
           // final token = await tokenProvider();
           // options.headers["Authorization"] = "Bearer $token";
 
