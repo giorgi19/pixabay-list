@@ -1,16 +1,9 @@
-# pixabay_list
+## Steps to Run the Project
 
-A new Flutter project.
+### The project uses the flutter_dotenv package to manage environment variables.
 
-## Getting Started
+	1.	Create a .env file in the project’s root.
+ 	2.	Open the .env file and configure the variable: API_KEY='your_api_key_here'.  
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### This project uses the freezed package and build_runner to generate supporting code. Run the following command to generate the required files:
+	1.	flutter pub run build_runner build --delete-conflicting-outputs

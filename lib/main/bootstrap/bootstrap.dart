@@ -13,16 +13,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final GetIt locator = GetIt.instance;
 
-/// This is for demonstration purposes: I am using get_it for the API client.
-/// A fully implemented get_it is not necessary for this project until the dependencies grow.
-/// For now, I will use constructor dependency injection, except the API.
+/// A fully implemented get_it is not necessary for this project due to the small number of dependencies.
 void setupLocator() {
   locator.registerLazySingleton<Dio>(Dio.new);
+  locator.registerLazySingleton<InMemoryTokenStorage>(InMemoryTokenStorage.new);
   locator.registerLazySingleton<ApiClient>(
     () => ApiClient(
       baseUrl: 'https://pixabay.com/api/',
       httpClient: locator<Dio>(),
-      tokenProvider: InMemoryTokenStorage().readToken,
+      tokenProvider: locator<InMemoryTokenStorage>().readToken,
     ),
   );
 }
