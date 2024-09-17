@@ -54,7 +54,7 @@ class PixabayFeedView extends StatelessWidget {
                         hit: data.hits?[index],
                       ),
                     ),
-                    childCount: data.hits?.length, // Number of items to display
+                    childCount: data.hits?.length,
                   ),
                 ),
               ],

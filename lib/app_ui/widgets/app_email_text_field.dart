@@ -43,9 +43,8 @@ class AppEmailTextField extends StatelessWidget {
       autoFillHints: const [AutofillHints.email],
       autocorrect: false,
       prefix: const Padding(
-        padding: EdgeInsets.only(
-          left: AppSpacing.sm,
-          right: AppSpacing.sm,
+        padding: EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm,
         ),
         child: Icon(
           Icons.email_outlined,
